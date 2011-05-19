@@ -1,0 +1,171 @@
+# sagi = sudo apt-get install (alias in ~/.bashrc)
+
+asgi vim-nox 
++ https://github.com/ronanguilloux/VimConfig
+
+sagi w64codecs gstreamer0.10-plugins-ugly gstreamer0.10-ffmpeg libdvdcss2 totem-gstreamer gstreamer0.10-plugins-bad-multiverse gstreamer0.10-plugins-bad
++ http://doc.ubuntu-fr.org/flashplayer
+
+# Services management
+apt-get install sysv-rc-conf
+
+# Energy management
+apt-get powertop	
+
+# Basics enhancement
+sagi linux-headers-generic build-essential rar unrar zip unzip p7zip p7zip-full p7zip-rar manpages-fr manpages-fr-extra sun-java6-jre sun-java6-plugin
+
+# Gnome enhancement
+sagi cairo-dock tree gnome-themes gnome-games-extra-data xscreensaver-gl xscreensaver-gl-extra
+
+# Gnome themes
+sagi gnome-themes-ubuntu gnome-themes-selected gnome-themes-extras community-themes gdm-themes screenlets
++ http://www.clapico.com/2009/11/07/heure/
+
+# Google gadgets
+sagi google-gadgets-gtk google-gadgets-xul google-gadgets-gst google-gadgets-common google-gadgets-qt kdebase-workspace-googlegadgets
+# cf. http://desktop.google.com/plugins/
+# cf. http://desktop.google.com/plugins/c/sidebar/technology.html?hl=fr
+
+# Nautilus enhancement
+sagi nautilus-actions nautilus-open-terminal nautilus-gksu nautilus-image-converter nautilus-open-terminal 
+
+# Games is a damned waste of time
+sagi wormux supertux frozen-bubble pingus pioneers
+
+# Usefull basic desktop software
+sagi filezilla gnomebaker brasero gimp vlc mozilla-plugin-vlc xpdf pidgin skype ffmpeg gmountiso bleachbit fslint
+
+# Shell enhancement
+sagi htop fortunes-fr vrms linuxlogo sysstat di discus pydf hardinfo
+
+# Sound
+sagi sound-juicer lame gstreamer0.10-plugins-ugly-multiverse
+
+# Office stuff
+sagi freemind planner collatinus conduit grsync lyx hamster
+# Lyx could be ignored : take 450 Mo
+# + gummy via getdeb
+
+# Network
+sagi nmapsi4 umit
+
+# Education
+sagi tuxtype celestia planets stellarium googleearth gbrainy
+
+# Latex
+# Cf. http://blog.rom1v.com/2009/07/bien-debuter-en-latex-sous-ubuntu/
+# Cf. http://doc.ubuntu-fr.org/latex, http://doc.ubuntu-fr.org/ooolatex
+sagi sudo apt-get install texlive texlive-lang-french texlive-latex-extra lmodern gedit-latex-plugin texlive-latex-recommended rubber
+
+# Google Chromium & Sketch Up
+http://doc.ubuntu-fr.org/chromium-browser
+http://doc.ubuntu-fr.org/sketchup
+sagi wine msttcorefonts
+
+# Dev
+sagi imagemagick apache2 libapache2-mod-php5 php5 php5-dev php5-cli php5-curl websvn bouml
+sagi phpmyadmin mysql-server apache2-utils php-pear phpunit php5-xcache php5-xdebug mysql-query-browser php5-db php5-sqlite php5-tidy php5-intl
+sagi subversion libapache2-svn subversion-tools nautilus-script-collection-svn rapidsvn virtualbox-ose virtualbox-ose-guest-utils gurlchecker tidy
+
+# Hudson + Phing:
+executing commands listed here : http://hudson-ci.org/debian/
+sudo apt-get install daemon
+sudo apt-get install hudson
+
+sudo pear channel-discover pear.symfony-project.com
+sudo pear channel-discover components.ez.no
+sudo pear channel-discover pear.phing.info
+sudo pear channel-discover pear.phpunit.de
+sudo pear channel-discover pear.pdepend.org
+sudo pear upgrade-all
+sudo pear install phing/phing
+sudo pear install phpunit/PHPUnit
+sudo pear install PhpDocumentor
+sudo pear install phpunit/phpcpd
+sudo pear install pdepend/PHP_Depend-beta
+sudo pear install PHP_CodeSniffer
+sudo pecl install xdebug
+sudo apt-get update && sudo apt-get upgrade
+in /etc/init.d/hudson, add : HUDSON_HOME=[Path to hudson, ex : /srv/maindisk/hudson]
+# adding EZC / ZETA CodenSniffers rules :
+sudo pear channel-discover pear.xplib.de
+sudo pear install xplib/PHP_CodeSniffer_Standards_EZC-beta
+
+# MySql conf : http://www.journaldunet.com/developpeur/outils/tutoriel-pratique/installation-et-configuration-de-mysql-sous-linux/installation-et-configuration-de-base.shtml
+
+# Adding current user to www-data group
+sudo adduser $LOGNAME www-data
+
+Installing xdebug : http://matthewturland.com/2010/01/03/phpunit-and-xdebug-on-ubuntu-karmic/
+# Configure MySQL & Apache2 services as manual
+http://doc.ubuntu-fr.org/lamp
+# Configure xdebug + Eclipse + LAMP
+http://doc.ubuntu-fr.org/eclipse_php_xdebug
+# Configure xcache:
+http://doc.ubuntu-fr.org/xcache
+# VirtualHosts
+http://doc.ubuntu-fr.org/tutoriel/virtualhosts_avec_apache2
+
+# Music
+sagi solfege audacity alsa-oss banshee banshee-extension-ubuntuonemusicstore songbird 
+
+# Son sous Dell 1555 :
+sudo vim /etc/modprobe.d/alsa-base.conf
+	=> Add :
+		# Son pour Dell 1555
+		options snd-hda-intel model=dell-m6
+
+
+-------------- /usr/bin/lamp ou /bin/lamp
+
+cf. http://www.galipe.net/articles/2011/02/
+cf. http://castyour.net/dev-machine-lamp-stop-start-restart
+
+#!/bin/sh
+
+case "$1" in
+  start)
+#        /etc/init.d/apache2 start
+#        /etc/init.d/mysql start
+        service apache2 start
+        service mysql start
+        ;;
+  stop)
+#        /etc/init.d/apache2 stop
+#        /etc/init.d/mysql stop
+        service apache2 stop
+        service mysql stop
+        ;;
+  reload)
+#        /etc/init.d/apache2 reload
+#        /etc/init.d/mysql reload
+        service apache2 reload
+        service mysql reload
+        ;;
+  restart)
+#        /etc/init.d/apache2 restart
+#        /etc/init.d/mysql restart
+        service apache2 restart
+        service mysql restart
+        ;;
+  *)
+        echo "Usage: lamp {start|stop|restart|reload}"
+        exit 1
+        ;;
+esac
+
+exit 0
+
+# LibreOffice:
+sudo apt-get purge "openoffice*.*"
+sudo add-apt-repository ppa:libreoffice/ppa
+upup
+sudo apt-get install libreoffice libreoffice-gnome language-support-fr
+upup
+
+# Open Ubuntu menu using Windows Key
+gconftool-2 --set /apps/metacity/global_keybindings/panel_main_menu --type string "Super_L"
+
+
+
