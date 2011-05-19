@@ -1,6 +1,6 @@
 # sagi = sudo apt-get install (alias in ~/.bashrc)
 
-asgi vim-nox 
+sagi vim-nox 
 + https://github.com/ronanguilloux/VimConfig
 
 sagi w64codecs gstreamer0.10-plugins-ugly gstreamer0.10-ffmpeg libdvdcss2 totem-gstreamer gstreamer0.10-plugins-bad-multiverse gstreamer0.10-plugins-bad
