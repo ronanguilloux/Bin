@@ -1,50 +1,97 @@
-<?php 
+<?php
 /** Backup class file
- * Created on 05 2011-07-05 2011 at 09:41 
- * @author ronan.guilloux
- * @link https://github.com/ronanguilloux/Scripts
+ * Created on 05 2011-07-05 2011 at 09:41
+ * @copyright Ronan Guilloux 2011
+ * @link https://github.com/ronanguilloux/Scripts/blob/master/backup.php
  * @license http://www.gnu.org/licenses/agpl.txt GNU AFFERO GPL v3
  * @version //autogentag//
  */
- 
+
+
+
 // -------------------------------------------------------
 // --- Params to change
-// ------------------------------------------------------- 
+// -------------------------------------------------------
 
-// 0. Settings
 $root = '/opt/backup/manual';
+$additionalBackupFolders = array(
+    '/media/usb2ronan/toog/backups'
+);
 $today = date('Y-m-d-H-i-s');
 $archiver = "tar";
 $args = "-cjf";
 $extension = ".tar.bz2";
 $logFile = "backup.log";
-$backupFolder = "$root/history/$today/";
+$historyFolder = "$root/history";
+$backupFolder = "$root/history/$today";
 $rootFolder = "/home/ronan";
+$minBitSizeRequired = 2000000000; // 2 Gigabits
+$email = 'rguilloux@toog.fr';
+// Since this could not be perfomed without I/O errors,
+// let's starts with the most precious folders...
 $folders2tar = array(
+    'Workspace',
     'Bureau',
     'Documents',
     'Hobbyspace',
     'Images',
-    'Programmes',
-    'Workspace',
+    'Bin',
 );
 
 // -------------------------------------------------------
 // --- No param to change under this lines
 // -------------------------------------------------------
+$command = "No command is defined";
+$result = "Script did no start yet";
+try{
 
-// 1. Creating today's backup folder
-$result = system("mkdir $backupFolder -p \n");
+    // 0. removing old backup older than 1 month
+    $result = system("find $historyFolder/* -mtime +30 -exec rm -rf {} \;");
 
-// 2. Iterating trhow array, making backups
-foreach($folders2tar as $key=>$folder){
-    $command = "$archiver $args $backupFolder$folder$extension $rootFolder/$folder";
-    $result .= "\n" . system($command);
+    // 1. Creating today's backup folder
+    $result = system("mkdir $backupFolder -p \n");
+
+    // 2. Iterating through array, making backups
+    foreach($folders2tar as $key=>$folder){
+/*
+        // check free space size first,
+        $command = "du -cbs " . realpath($backupFolder) . " | grep 'total'";
+        $size = str_replace("\t","", str_replace('total','',trim(exec($command))));
+        echo "\ntaille de " . realpath($backupFolder) . " : $size bits \n";
+ */
+        $command = "$archiver $args $backupFolder/$folder$extension $rootFolder/$folder";
+        $result .= "\n" . system($command);
+    }
+
+    // 3. Copying backup into additional folders
+    foreach($additionalBackupFolders as $key=>$dir){
+
+        if(is_dir(realpath($dir))){
+            // cleaning previous backups
+            // TODO : conserve the last days
+            $stats = stat(realpath($dir));
+            $dateformat = "Y-m-d-H-i-s";
+            //$lastmodified = Date::createFormFormat()("Y-m-d H:i:s",($stats['mtime']));
+            //echo $lastmodified;
+            $command = "rm " . realpath($dir) . "/* -R";
+            $result .= "\n" . system($command);
+            // copying
+            $command = "cp $backupFolder " . realpath($dir) . " -R";
+            $result .= "\n" . system($command);
+        }
+    }
+
+    // 4. Tracing
+    $result = trim($result);
+    file_put_contents($backupFolder.'/'.$logFile, $result);
 }
-
-// 3. Tracing
-$result = trim($result);
-file_put_contents($backupFolder.$logFile, $result);
+catch (Exception $e){
+    $message = "Error raised in " . realpath(__FILE__) . " while attempting to backup ";
+    $message .= implode(", ", $folders2tar) . " in " .realpath($backupFolder) . " folder";
+    $message .= " using (last command found) : '" . $command ."' command";
+    echo $message;
+    mail($email, "[Backup error] rootFolder : $rootFolder", $message);
+}
 
 ?>
 
