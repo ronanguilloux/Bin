@@ -13,9 +13,11 @@
 // --- Params to change
 // -------------------------------------------------------
 
+// TODO :use a .ini file
 $root = '/opt/backup/manual';
 $additionalBackupFolders = array(
-    '/media/usb2ronan/toog/backups'
+    '/media/usb2ronan/toog/backups',
+    '/home/ronan/Ubuntu One/toog'
 );
 $today = date('Y-m-d-H-i-s');
 $archiver = "tar";
@@ -58,7 +60,7 @@ try{
         $command = "du -cbs " . realpath($backupFolder) . " | grep 'total'";
         $size = str_replace("\t","", str_replace('total','',trim(exec($command))));
         echo "\ntaille de " . realpath($backupFolder) . " : $size bits \n";
- */
+*/
         $command = "$archiver $args $backupFolder/$folder$extension $rootFolder/$folder";
         $result .= "\n" . system($command);
     }
@@ -71,12 +73,15 @@ try{
             // TODO : conserve the last days
             $stats = stat(realpath($dir));
             $dateformat = "Y-m-d-H-i-s";
+            $realpath = str_replace(' ', '\ ', realpath($dir));
             //$lastmodified = Date::createFormFormat()("Y-m-d H:i:s",($stats['mtime']));
             //echo $lastmodified;
-            $command = "rm " . realpath($dir) . "/* -R";
+            $command = "rm " . $realpath . "/* -R";
+            echo "\n" . $command . "\n";
             $result .= "\n" . system($command);
             // copying
-            $command = "cp $backupFolder " . realpath($dir) . " -R";
+            $command = "cp $backupFolder " . $realpath . " -R";
+            echo "\n" . $command . "\n";
             $result .= "\n" . system($command);
         }
     }
@@ -86,11 +91,11 @@ try{
     file_put_contents($backupFolder.'/'.$logFile, $result);
 }
 catch (Exception $e){
-    $message = "Error raised in " . realpath(__FILE__) . " while attempting to backup ";
-    $message .= implode(", ", $folders2tar) . " in " .realpath($backupFolder) . " folder";
-    $message .= " using (last command found) : '" . $command ."' command";
-    echo $message;
-    mail($email, "[Backup error] rootFolder : $rootFolder", $message);
+   $message = "Error raised in " . realpath(__FILE__) . " while attempting to backup ";
+   $message .= implode(", ", $folders2tar) . " in " .realpath($backupFolder) . " folder";
+   $message .= " using (last command found) : '" . $command ."' command";
+   echo $message;
+   mail($email, "[Backup error] rootFolder : $rootFolder", $message);
 }
 
 ?>
