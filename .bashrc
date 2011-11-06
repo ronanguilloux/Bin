@@ -81,15 +81,27 @@ if [ -x /usr/bin/dircolors ]; then
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
 
-    #alias grep='grep --color=auto'
+    alias grep='grep --color=auto'
     #alias fgrep='fgrep --color=auto'
     #alias egrep='egrep --color=auto'
 fi
 
 # some more aliases
-alias ll='ls -lh'
 alias la='ls -la'
 alias l='ls -la'
+alias ls='ls -h --color --group-directories-first' 
+alias lsa='ls -A'           # affiche les fichiers cachés
+alias ll='ls -lh'           # affiche en mode liste détail
+alias lla='ls -Al'          # affiche en mode liste détail + fichiers cachés
+alias lx='ls -lXB'          # tri par extension
+alias lk='ls -lSr'          # tri par taille, le plus lourd à la fin
+alias lc='ls -ltcr'         # tri par date de modification, la pus récente à la fin
+alias lu='ls -ltur'         # tri par date d’accès, la pus récente à la fin
+alias lt='ls -ltr'          # tri par date, la pus récente à la fin
+alias lm='ls -al | more'    # Pipe a travers 'more'
+alias lr='ls -lR'           # ls récurssif
+alias tree='tree -Csu'      # affiche sous forme d'arborescence, nécessite le paquet "tree"
+alias du='du -kh'
 alias untar="tar xvf"
 alias ungz="gunzip"
 alias unzip2="bzip2 -d"
@@ -100,27 +112,46 @@ alias upup='sudo apt-get update && sudo apt-get upgrade && sudo apt-get autoremo
 alias upupg='sudo apt-get update && sudo apt-get upgrade && sudo apt-get dist-upgrade && sudo apt-get autoremove && sudo apt-get autoclean'
 alias sagi='sudo apt-get install'
 alias sacs='sudo apt-cache search'
+alias ppa='sudo add-apt-repository'
 alias autoremove='sudo apt-get autoremove && sudo apt-get autoclean'
 # cf. aussi : sudo dpkg -P `dpkg -l | grep "^rc" | tr -s ' ' | cut -d ' ' -f 2`
 alias purge='sudo apt-get remove --purge `deborphan`'
 alias purgeall='sudo apt-get --purge remove `deborphan -n --guess-all`'
 alias menage='find . -name "*~" -exec rm {} \;'
 alias menagesvn='find . -name ".svn" -exec rm -rf {} \;'
+alias menagemac='find . -name "._*" -exec rm -rf {} \;'
 alias menageup='sudo apt-get clean && sudo apt-get autoclean && sudo apt-get autoremove'
-alias eZPurge='php bin/php/ezcache.php --clear-all --purge && php bin/php/ezpgenerateautoloads.php -p'
 alias arbre='tree -ugsapD'
 alias taille='du -chs'
-alias WWWfy='sudo chmod 775 * -R && sudo chown ronan:www-data * -R'
+alias chch='sudo chmod 775 * -R && sudo chown ronan:www-data * -R'
 alias semaine='date '+%U''
 alias combien='ls -l | grep -v ^l | wc -l'
 alias trouver="echo \"find . -name '*' -exec grep -Hn '/MaChaine/' {} \;\""
 alias screencast='ffmpeg -f x11grab -r 25 -s wxga -i :0.0 /tmp/outputFile.mpg'
 alias lastmodified='find -type f -print0 | xargs -r0 stat -c %y\ %n | sort'
-alias gtr='php ~/shell/googleTranslate.php'
+alias gtr='php ~/Bin/shell/googleTranslate.php'
 alias realtimemodifiedfiles="watch -d -n 2 'df; ls -FlAt;'"
 alias jobeet='cd /opt/web/symfony/jobeet'
+alias work='cd ~/Workspace'
 alias vimvim="vim ~/.vimrc"
+alias vimbashrc="vim ~/.bashrc"
+alias rebashrc=". ~/.bashrc"
+alias svim="sudo vim"
+alias svndifff="svn diff | view -"
+alias svnlogg="svn log -v -r{`date '+%Y-%m-01'`}:{`date '+%Y-%m-31'`} | colordiff"
+alias ssarl="sudo service apache2 reload"
+alias shistory='history | grep '
+alias sshmemo="history | grep 'ssh '"
+alias svnmemo="history | grep 'svn '"
+alias vimmemo="history | grep 'vim '"
+alias svncommitmemo="history | grep 'svn commit '"
+alias mybackup="cd /opt/backup/manual/ && php backup.php && cd -"
+alias jsstyle="seed ~/Bin/js/jslint.js"
+alias lotro=". ~/Bin/lotro.sh"
 
+
+# add alias to get latest version of mongo cheatsheet
+ alias mongocheat='curl -s http://cheat.errtheblog.com/s/mongo | groovy -e "@Grab(group=/net.sourceforge.nekohtml/, module=/nekohtml/, version=/1.9.14/)import org.cyberneko.html.parsers.SAXParser;println new XmlSlurper(new SAXParser()).parseText(System.in.text).depthFirst().find{ it.@class == /sheet/}.text()"'
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -132,9 +163,10 @@ fi
 HISTSIZE=10000
 HISTFILESIZE=10000
 
-#fortune /usr/share/games/fortunes/fr/tolkien_fr
+fortune /usr/share/games/fortunes/fr/tolkien_fr
 
-#export HISTTIMEFORMAT="%d/%m/%y %T "
+export HISTTIMEFORMAT="%d/%m/%y %T "
+#export HISTTIMEFORMAT="%h/%d – %H:%M:%S "
 export PATH=$PATH:$GOBIN
 
 function parse_git_branch () {
@@ -147,4 +179,13 @@ GREEN="\[\033[0;32m\]"
 NO_COLOUR="\[\033[0m\]"
 
 PS1="$GREEN\u@\h$NO_COLOUR:\w$YELLOW\$(parse_git_branch)$NO_COLOUR\$ "
+#PS1="\[\033[01;31m\][\u@\h\[\033[00m\]:\[\033[01;34m\]\w]\[\033[00m\]\$ "
 
+# colorized man, needs to isntall most
+export PAGER=most
+
+# Node.js
+export PATH=$HOME/local/bin:$PATH
+# Android
+export PATH=/home/ronan/Bin/android-sdk-linux_x86/tools:${PATH}
+export PATH=/home/ronan/Bin/android-sdk-linux_x86/platform-tools:${PATH}
