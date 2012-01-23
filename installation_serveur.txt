@@ -1,0 +1,100 @@
+-------------------------------------------------------------------------------------------------------
+INSTALLATION
+
+* Modifier le fuseau horaire de l'heure système (=> Europe/Paris) :
+    
+    sudo dpkg-reconfigure tzdata
+    sudo vim /etc/environment
+        +1 ligne : 
+            TZ="Europe/Paris"
+        
+
+* custom ~/.bashrc de toog
+
+    sudo apt-get update
+    sudo apt-get upgrade
+
+* Server utils:
+
+    sagi make tree rsync rar unrar zip unzip p7zip p7zip-full p7zip-rar manpages-fr manpages-fr-extra manpages-dev
+
+* SVN:
+
+    sagi subversion-tools subversion
+
+* LAMP:    
+
+    sagi apache2 apache2-mpm-prefork libapache2-mod-php5 apache2-utils php5 php5-dev websvn libapache2-svn 
+    sagi sagi phpmyadmin mysql-server
+    sagi imagemagick php5-xcache php5-xdebug php5-mysql php-db php5-sqlite php5-cli php5-curl php5-suhosin php-pear php5-gd php5-imagick php5-imap php5-xsl php5-common php5-mcrypt php5-memcache php5-ps php5-pspell php5-recode php5-snmp php5-tidy php5-intl php-geshi
+    
+    sudo a2enmod rewrite
+    sudo a2enmod headers
+    sudo a2enmod deflate  
+    # for git vhost :
+    sudo a2enmod dav
+    sudo a2enmod dav_fs
+
+* PHP custom conf:
+
+    /etc/php5/apache2 & cli :
+        date.timezone = Europe/Paris
+
+    sudo pecl install mongo
+        + add "extension=mongo.so" to php.ini (/etc/php5/apache2 & /etc/php5/cli)
+    
+        /etc/php5/apache2/conf.d/xcache.ini:
+        xcache.size	128M	; mémoire réservée pour XCache
+        xcache.count	2	; on donne le nombre total de processeurs [grep -c processor /proc/cpuinfo]    
+        
+    conf de suhosin pour pĥpmyadmin :
+        cf. http://MON.IP/phpmyadmin/Documentation.html#faq1_38, fait dans /etc/php5/conf.d/suhosin.ini
+* GIT
+
+    sagi git git-core git-doc git-svn git-email gitweb
+    + mise en place du serveur avec un user git + clefs publics : http://progit.org/book/fr/ch4-4.html
+
+* Shell enhancements:    
+
+    sagi cloc tidy markdown htop sysstat di discus pydf hardinfo
+
+* PHPUnit
+
+    sudo pear channel-discover pear.symfony-project.com
+    sudo pear channel-discover pear.phpunit.de
+    sudo pear install phpunit/PHPUnit --allDeps
+    
+* Silex ready
+   
+   /etc/php5/apache2/php.ini & /cli/php.ini :
+
+[Phar]
+; http://php.net/phar.readonly
+phar.readonly = Off
+
+; http://php.net/phar.require-hash
+phar.require_hash = Off
+
+detect_unicode = Off
+suhosin.executor.include.whitelist = phar
+
+* Mongo: cf. http://www.mongodb.org/display/DOCS/Ubuntu+and+Debian+packages
+
+* Mise en place de backup pour mongo (rétention sur 7 jours, accessible en lecture/écriture à toog) :
+
+    sudo mkdir /var/backups/mongo
+    sudo chown toog:toog /var/backups/mongo
+    sudo chmod 775 /var/backups/mongo
+    crontab -e (de toog)
+    + 1 ligne:
+        30 2 * * *	mongodump --directoryperdb -o /var/backups/mongo/`date +'%u'` > /home/toog/bin/mongobackup.cron.log
+
+* Script Backup Mysql in /home/toog/bin/mysqlbackup.sh
+
+    sudo mkdir /var/backups/mysql
+    sudo chown toog:toog /var/backups/mysql
+    sudo chmod 775 /var/backups/mysql
+    # récupérer https://gist.github.com/1595563 dans /home/toog/bin/mysqlbackup.sh
+    crontab -e (de toog)
+    + 1 ligne:
+        0 2 * * *	/home/toog/bin/mysqlbackup.sh >> /home/toog/bin/mysqlbackup.sh.log

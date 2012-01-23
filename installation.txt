@@ -1,6 +1,6 @@
 # sagi = sudo apt-get install (alias in ~/.bashrc)
 
-sagi vim-nox 
+sagi vim-nox exuberant-ctags
 + https://github.com/ronanguilloux/VimConfig
 
 sagi w64codecs gstreamer0.10-plugins-ugly gstreamer0.10-ffmpeg libdvdcss2 totem-gstreamer gstreamer0.10-plugins-bad-multiverse gstreamer0.10-plugins-bad
@@ -28,7 +28,7 @@ sagi google-gadgets-gtk google-gadgets-xul google-gadgets-gst google-gadgets-com
 # cf. http://desktop.google.com/plugins/c/sidebar/technology.html?hl=fr
 
 # Nautilus enhancement
-sagi nautilus-actions nautilus-open-terminal nautilus-gksu nautilus-image-converter nautilus-open-terminal 
+sagi nautilus-actions nautilus-open-terminal nautilus-gksu nautilus-image-converter nautilus-open-terminal regexxer 
 
 # Games is a damned waste of time
 sagi wormux supertux frozen-bubble pingus pioneers
@@ -64,15 +64,25 @@ http://doc.ubuntu-fr.org/sketchup
 sagi wine msttcorefonts
 
 # Dev
-sagi imagemagick apache2 libapache2-mod-php5 php5 php5-dev php5-cli php5-curl websvn bouml
-sagi phpmyadmin mysql-server apache2-utils php-pear phpunit php5-xcache php5-xdebug mysql-query-browser php5-db php5-sqlite php5-tidy php5-intl
-sagi subversion libapache2-svn subversion-tools nautilus-script-collection-svn rapidsvn virtualbox-ose virtualbox-ose-guest-utils gurlchecker tidy
+sagi apache2 apache2-mpm-prefork libapache2-mod-php5 apache2 -utils php5 php5-dev websvn subversion libapache2-svn subversion-tools phpmyadmin mysql-server
+sagi imagemagick php5-xcache php5-xdebug php5-mysql php5-sqlite php5-cli php5-curl php5-suhosin php-pear php5-gd php5-imagick php5-imap php5-xsl php5-common php5-mcrypt php5-memcache php5-ps php5-pspell php5-recode php5-snmp php5-tidy php5-intl php5-geshi
+
+# Dev GUI & tools
+sagi cloc arduino bouml tidy markdown git git-core git-gui git-doc git-svn git-email gitk gitweb
+sagi nautilus-script-collection-svn mysql-query-browser rapidsvn virtualbox-ose virtualbox-ose-guest-utils
+
+MongoDB : 
+http://www.mongodb.org/display/DOCS/Ubuntu+and+Debian+packages (key GPG, dépot ubuntu-upstart
+puis http://www.mongodb.org/display/DOCS/Quickstart+Unix :
+sudo mkdir -p /data/db/
+$ sudo chown `id -u` /data/db
 
 # Hudson + Phing:
 executing commands listed here : http://hudson-ci.org/debian/
 sudo apt-get install daemon
 sudo apt-get install hudson
 
+# PEAR, PhpUnit & dependencies, Xdebug
 sudo pear channel-discover pear.symfony-project.com
 sudo pear channel-discover components.ez.no
 sudo pear channel-discover pear.phing.info
@@ -93,6 +103,17 @@ sudo pear channel-discover pear.xplib.de
 sudo pear install xplib/PHP_CodeSniffer_Standards_EZC-beta
 
 # MySql conf : http://www.journaldunet.com/developpeur/outils/tutoriel-pratique/installation-et-configuration-de-mysql-sous-linux/installation-et-configuration-de-base.shtml
+
+# conf de php5-xdebug :
+sudo pecl install xdebug
+find / -name 'xdebug.so' 2> /dev/null
++ 6 lignes à /etc/php5/apache2/php.ini : 
+; Xdebug
+zend_extension="/usr/lib/php5/20090626/xdebug.so"
+xdebug.remote_enable=On
+xdebug.remote_host="localhost"
+xdebug.remote_port=9000
+xdebug.remote_handler="dbgp"
 
 # Adding current user to www-data group
 sudo adduser $LOGNAME www-data

@@ -100,7 +100,7 @@ alias lu='ls -ltur'         # tri par date d’accès, la pus récente à la fin
 alias lt='ls -ltr'          # tri par date, la pus récente à la fin
 alias lm='ls -al | more'    # Pipe a travers 'more'
 alias lr='ls -lR'           # ls récurssif
-alias tree='tree -Csu'      # affiche sous forme d'arborescence, nécessite le paquet "tree"
+#alias tree='tree -Csu'      # affiche sous forme d'arborescence, nécessite le paquet "tree"
 alias du='du -kh'
 alias untar="tar xvf"
 alias ungz="gunzip"
@@ -119,6 +119,7 @@ alias purge='sudo apt-get remove --purge `deborphan`'
 alias purgeall='sudo apt-get --purge remove `deborphan -n --guess-all`'
 alias menage='find . -name "*~" -exec rm {} \;'
 alias menagesvn='find . -name ".svn" -exec rm -rf {} \;'
+alias menagegit='find . -name ".git" -exec rm -rf {} \;'
 alias menagemac='find . -name "._*" -exec rm -rf {} \;'
 alias menageup='sudo apt-get clean && sudo apt-get autoclean && sudo apt-get autoremove'
 alias arbre='tree -ugsapD'
@@ -131,23 +132,29 @@ alias screencast='ffmpeg -f x11grab -r 25 -s wxga -i :0.0 /tmp/outputFile.mpg'
 alias lastmodified='find -type f -print0 | xargs -r0 stat -c %y\ %n | sort'
 alias gtr='php ~/Bin/shell/googleTranslate.php'
 alias realtimemodifiedfiles="watch -d -n 2 'df; ls -FlAt;'"
-alias jobeet='cd /opt/web/symfony/jobeet'
 alias work='cd ~/Workspace'
+alias sf="symfony"
 alias vimvim="vim ~/.vimrc"
 alias vimbashrc="vim ~/.bashrc"
 alias rebashrc=". ~/.bashrc"
 alias svim="sudo vim"
+alias git2cl='git log --graph --pretty=medium --color=never > CHANGELOG'
+alias gpom='git push origin master'
 alias svndifff="svn diff | view -"
 alias svnlogg="svn log -v -r{`date '+%Y-%m-01'`}:{`date '+%Y-%m-31'`} | colordiff"
+alias svn2ch="~/Bin/shell/svn2cl-0.13/svn2cl.sh -o CHANGELOG"
 alias ssarl="sudo service apache2 reload"
+alias ssars="sudo service apache2 restart"
 alias shistory='history | grep '
 alias sshmemo="history | grep 'ssh '"
+alias sshlist=". ~/Bin/shell/sshlist.sh"
 alias svnmemo="history | grep 'svn '"
 alias vimmemo="history | grep 'vim '"
 alias svncommitmemo="history | grep 'svn commit '"
+alias sfmemo="history | grep 'symfony '"
 alias mybackup="cd /opt/backup/manual/ && php backup.php && cd -"
 alias jsstyle="seed ~/Bin/js/jslint.js"
-alias lotro=". ~/Bin/lotro.sh"
+alias c='clear'
 
 
 # add alias to get latest version of mongo cheatsheet
@@ -163,7 +170,7 @@ fi
 HISTSIZE=10000
 HISTFILESIZE=10000
 
-fortune /usr/share/games/fortunes/fr/tolkien_fr
+# fortune /usr/share/games/fortunes/fr/tolkien_fr
 
 export HISTTIMEFORMAT="%d/%m/%y %T "
 #export HISTTIMEFORMAT="%h/%d – %H:%M:%S "
