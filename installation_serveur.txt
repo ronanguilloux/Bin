@@ -16,7 +16,7 @@ INSTALLATION
 
 * Server utils:
 
-    sagi make tree rsync rar unrar zip unzip p7zip p7zip-full p7zip-rar manpages-fr manpages-fr-extra manpages-dev
+    sagi make tree rsync rar unrar zip unzip p7zip p7zip-full p7zip-rar manpages-fr manpages-fr-extra manpages-dev most
 
 * SVN:
 
