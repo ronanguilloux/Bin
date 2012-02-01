@@ -2,12 +2,12 @@
 INSTALLATION
 
 * Modifier le fuseau horaire de l'heure système (=> Europe/Paris) :
-    
+
     sudo dpkg-reconfigure tzdata
     sudo vim /etc/environment
-        +1 ligne : 
+        +1 ligne :
             TZ="Europe/Paris"
-        
+
 
 * custom ~/.bashrc de toog
 
@@ -16,21 +16,21 @@ INSTALLATION
 
 * Server utils:
 
-    sagi make tree rsync rar unrar zip unzip p7zip p7zip-full p7zip-rar manpages-fr manpages-fr-extra manpages-dev most lynx
+    sagi make tree rsync rar unrar zip unzip p7zip p7zip-full p7zip-rar manpages-fr manpages-fr-extra manpages-dev most lynx analog
 
 * SVN:
 
     sagi subversion-tools subversion
 
-* LAMP:    
+* LAMP:
 
-    sagi apache2 apache2-mpm-prefork libapache2-mod-php5 apache2-utils php5 php5-dev websvn libapache2-svn 
+    sagi apache2 apache2-mpm-prefork libapache2-mod-php5 apache2-utils php5 php5-dev websvn libapache2-svn
     sagi sagi phpmyadmin mysql-server
     sagi imagemagick php5-xcache php5-xdebug php5-mysql php-db php5-sqlite php5-cli php5-curl php5-suhosin php-pear php5-gd php5-imagick php5-imap php5-xsl php5-common php5-mcrypt php5-memcache php5-ps php5-pspell php5-recode php5-snmp php5-tidy php5-intl php-geshi
-    
+
     sudo a2enmod rewrite
     sudo a2enmod headers
-    sudo a2enmod deflate  
+    sudo a2enmod deflate
     # for git vhost :
     sudo a2enmod dav
     sudo a2enmod dav_fs
@@ -42,11 +42,11 @@ INSTALLATION
 
     sudo pecl install mongo
         + add "extension=mongo.so" to php.ini (/etc/php5/apache2 & /etc/php5/cli)
-    
+
         /etc/php5/apache2/conf.d/xcache.ini:
         xcache.size	128M	; mémoire réservée pour XCache
-        xcache.count	2	; on donne le nombre total de processeurs [grep -c processor /proc/cpuinfo]    
-        
+        xcache.count	2	; on donne le nombre total de processeurs [grep -c processor /proc/cpuinfo]
+
     conf de suhosin pour pĥpmyadmin :
         cf. http://MON.IP/phpmyadmin/Documentation.html#faq1_38, fait dans /etc/php5/conf.d/suhosin.ini
 * GIT
@@ -54,7 +54,7 @@ INSTALLATION
     sagi git git-core git-doc git-svn git-email gitweb
     + mise en place du serveur avec un user git + clefs publics : http://progit.org/book/fr/ch4-4.html
 
-* Shell enhancements:    
+* Shell enhancements:
 
     sagi cloc tidy markdown htop sysstat di discus pydf hardinfo
 
@@ -64,9 +64,9 @@ INSTALLATION
     sudo pear channel-discover pear.symfony-project.com
     sudo pear channel-discover pear.phpunit.de
     sudo pear install phpunit/PHPUnit -a
-    
+
 * Silex ready
-   
+
    /etc/php5/apache2/php.ini & /cli/php.ini :
 
 [Phar]
