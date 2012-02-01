@@ -10,7 +10,7 @@ sagi w64codecs gstreamer0.10-plugins-ugly gstreamer0.10-ffmpeg libdvdcss2 totem-
 apt-get install sysv-rc-conf
 
 # Energy management
-apt-get powertop	
+apt-get powertop
 
 # Basics enhancement
 sagi linux-headers-generic build-essential rar unrar zip unzip p7zip p7zip-full p7zip-rar manpages-fr manpages-fr-extra sun-java6-jre sun-java6-plugin
@@ -28,7 +28,7 @@ sagi google-gadgets-gtk google-gadgets-xul google-gadgets-gst google-gadgets-com
 # cf. http://desktop.google.com/plugins/c/sidebar/technology.html?hl=fr
 
 # Nautilus enhancement
-sagi nautilus-actions nautilus-open-terminal nautilus-gksu nautilus-image-converter nautilus-open-terminal regexxer 
+sagi nautilus-actions nautilus-open-terminal nautilus-gksu nautilus-image-converter nautilus-open-terminal regexxer
 
 # Games is a damned waste of time
 sagi wormux supertux frozen-bubble pingus pioneers
@@ -37,7 +37,7 @@ sagi wormux supertux frozen-bubble pingus pioneers
 sagi filezilla gnomebaker brasero gimp vlc mozilla-plugin-vlc xpdf pidgin skype ffmpeg gmountiso bleachbit fslint
 
 # Shell enhancement
-sagi htop fortunes-fr vrms linuxlogo sysstat di discus pydf hardinfo
+sagi htop fortunes-fr vrms linuxlogo sysstat di discus pydf hardinfo modt lynx
 
 # Sound
 sagi sound-juicer lame gstreamer0.10-plugins-ugly-multiverse
@@ -64,14 +64,14 @@ http://doc.ubuntu-fr.org/sketchup
 sagi wine msttcorefonts
 
 # Dev
-sagi apache2 apache2-mpm-prefork libapache2-mod-php5 apache2 -utils php5 php5-dev websvn subversion libapache2-svn subversion-tools phpmyadmin mysql-server
+sagi apache2 apache2-mpm-prefork libapache2-mod-php5 apache2-utils php5 php5-dev websvn subversion libapache2-svn subversion-tools phpmyadmin mysql-server
 sagi imagemagick php5-xcache php5-xdebug php5-mysql php5-sqlite php5-cli php5-curl php5-suhosin php-pear php5-gd php5-imagick php5-imap php5-xsl php5-common php5-mcrypt php5-memcache php5-ps php5-pspell php5-recode php5-snmp php5-tidy php5-intl php5-geshi
 
 # Dev GUI & tools
 sagi cloc arduino bouml tidy markdown git git-core git-gui git-doc git-svn git-email gitk gitweb
 sagi nautilus-script-collection-svn mysql-query-browser rapidsvn virtualbox-ose virtualbox-ose-guest-utils
 
-MongoDB : 
+MongoDB :
 http://www.mongodb.org/display/DOCS/Ubuntu+and+Debian+packages (key GPG, dépot ubuntu-upstart
 puis http://www.mongodb.org/display/DOCS/Quickstart+Unix :
 sudo mkdir -p /data/db/
@@ -107,7 +107,7 @@ sudo pear install xplib/PHP_CodeSniffer_Standards_EZC-beta
 # conf de php5-xdebug :
 sudo pecl install xdebug
 find / -name 'xdebug.so' 2> /dev/null
-+ 6 lignes à /etc/php5/apache2/php.ini : 
++ 6 lignes à /etc/php5/apache2/php.ini :
 ; Xdebug
 zend_extension="/usr/lib/php5/20090626/xdebug.so"
 xdebug.remote_enable=On
@@ -129,7 +129,7 @@ http://doc.ubuntu-fr.org/xcache
 http://doc.ubuntu-fr.org/tutoriel/virtualhosts_avec_apache2
 
 # Music
-sagi solfege audacity alsa-oss banshee banshee-extension-ubuntuonemusicstore songbird 
+sagi solfege audacity alsa-oss banshee banshee-extension-ubuntuonemusicstore songbird
 
 # Son sous Dell 1555 :
 sudo vim /etc/modprobe.d/alsa-base.conf

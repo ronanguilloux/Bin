@@ -16,7 +16,7 @@ INSTALLATION
 
 * Server utils:
 
-    sagi make tree rsync rar unrar zip unzip p7zip p7zip-full p7zip-rar manpages-fr manpages-fr-extra manpages-dev most
+    sagi make tree rsync rar unrar zip unzip p7zip p7zip-full p7zip-rar manpages-fr manpages-fr-extra manpages-dev most lynx
 
 * SVN:
 
@@ -60,9 +60,10 @@ INSTALLATION
 
 * PHPUnit
 
+    sudo pear upgrade pear
     sudo pear channel-discover pear.symfony-project.com
     sudo pear channel-discover pear.phpunit.de
-    sudo pear install phpunit/PHPUnit --allDeps
+    sudo pear install phpunit/PHPUnit -a
     
 * Silex ready
    

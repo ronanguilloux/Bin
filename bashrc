@@ -127,11 +127,13 @@ alias taille='du -chs'
 alias chch='sudo chmod 775 * -R && sudo chown ronan:www-data * -R'
 alias semaine='date '+%U''
 alias combien='ls -l | grep -v ^l | wc -l'
-alias trouver="echo \"find . -name '*' -exec grep -Hn '/MaChaine/' {} \;\""
+alias chercher="echo \"find . -name '*' -exec grep -Hn '/MaChaine/' {} \;\""
+alias trouver="find . -type f -print0 | xargs -0 grep " # usage : trouver 'exec(' 
 alias screencast='ffmpeg -f x11grab -r 25 -s wxga -i :0.0 /tmp/outputFile.mpg'
 alias lastmodified='find -type f -print0 | xargs -r0 stat -c %y\ %n | sort'
 alias gtr='php ~/Bin/shell/googleTranslate.php'
 alias realtimemodifiedfiles="watch -d -n 2 'df; ls -FlAt;'"
+alias jobeet='cd /opt/web/symfony/jobeet'
 alias work='cd ~/Workspace'
 alias sf="symfony"
 alias vimvim="vim ~/.vimrc"
@@ -154,7 +156,9 @@ alias svncommitmemo="history | grep 'svn commit '"
 alias sfmemo="history | grep 'symfony '"
 alias mybackup="cd /opt/backup/manual/ && php backup.php && cd -"
 alias jsstyle="seed ~/Bin/js/jslint.js"
+alias lotro=". ~/Bin/lotro.sh"
 alias c='clear'
+alias apache2routes='. ~/Bin/shell/apache2routes.sh'
 
 
 # add alias to get latest version of mongo cheatsheet
@@ -196,3 +200,13 @@ export PATH=$HOME/local/bin:$PATH
 # Android
 export PATH=/home/ronan/Bin/android-sdk-linux_x86/tools:${PATH}
 export PATH=/home/ronan/Bin/android-sdk-linux_x86/platform-tools:${PATH}
+
+# usage : genpasswd 8
+genpasswd() {
+    local l=$1
+    [ "$l" == "" ] && l=20
+    tr -dc A-Za-z0-9_ < /dev/urandom | head -c ${l} | xargs
+}
+
+
+
