@@ -8,6 +8,10 @@ INSTALLATION
         +1 ligne :
             TZ="Europe/Paris"
 
+* Accès SSH (inutile pour un serveur déjà accessible via ssh) :
+
+    sudo apt-get install openssh-server
+    sudo ufw default allow incoming
 
 * custom ~/.bashrc de toog
 
