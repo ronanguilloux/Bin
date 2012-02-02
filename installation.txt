@@ -65,7 +65,7 @@ sagi wine msttcorefonts
 
 # Dev
 sagi apache2 apache2-mpm-prefork libapache2-mod-php5 apache2-utils php5 php5-dev websvn subversion libapache2-svn subversion-tools phpmyadmin mysql-server
-sagi imagemagick php5-xcache php5-xdebug php5-mysql php5-sqlite php5-cli php5-curl php5-suhosin php-pear php5-gd php5-imagick php5-imap php5-xsl php5-common php5-mcrypt php5-memcache php5-ps php5-pspell php5-recode php5-snmp php5-tidy php5-intl php5-geshi
+sagi imagemagick php5-apc php5-xdebug php5-mysql php5-sqlite php5-cli php5-curl php5-suhosin php-pear php5-gd php5-imagick php5-imap php5-xsl php5-common php5-mcrypt php5-memcache php5-ps php5-pspell php5-recode php5-snmp php5-tidy php5-intl php5-geshi
 
 # Dev GUI & tools
 sagi cloc arduino bouml tidy markdown git git-core git-gui git-doc git-svn git-email gitk gitweb
@@ -123,8 +123,15 @@ Installing xdebug : http://matthewturland.com/2010/01/03/phpunit-and-xdebug-on-u
 http://doc.ubuntu-fr.org/lamp
 # Configure xdebug + Eclipse + LAMP
 http://doc.ubuntu-fr.org/eclipse_php_xdebug
-# Configure xcache:
-http://doc.ubuntu-fr.org/xcache
+# Configure php-apc
+
+    # +2 lines in /etc/php5/apache2 & cli/php.ini
+
+        apc.enabled = 1
+        apc.enable_cli = 1
+
+    # Then restart apache2
+
 # VirtualHosts
 http://doc.ubuntu-fr.org/tutoriel/virtualhosts_avec_apache2
 

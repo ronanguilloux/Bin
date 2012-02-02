@@ -26,7 +26,7 @@ INSTALLATION
 
     sagi apache2 apache2-mpm-prefork libapache2-mod-php5 apache2-utils php5 php5-dev websvn libapache2-svn
     sagi sagi phpmyadmin mysql-server
-    sagi imagemagick php5-xcache php5-xdebug php5-mysql php-db php5-sqlite php5-cli php5-curl php5-suhosin php-pear php5-gd php5-imagick php5-imap php5-xsl php5-common php5-mcrypt php5-memcache php5-ps php5-pspell php5-recode php5-snmp php5-tidy php5-intl php-geshi
+    sagi imagemagick php5-apc php5-xdebug php5-mysql php-db php5-sqlite php5-cli php5-curl php5-suhosin php-pear php5-gd php5-imagick php5-imap php5-xsl php5-common php5-mcrypt php5-memcache php5-ps php5-pspell php5-recode php5-snmp php5-tidy php5-intl php-geshi
 
     sudo a2enmod rewrite
     sudo a2enmod headers
@@ -78,6 +78,17 @@ phar.require_hash = Off
 
 detect_unicode = Off
 suhosin.executor.include.whitelist = phar
+
+* APC PHP acceleration
+
+    sagi php-apc
+
+    # +2 lines in /etc/php5/apache2 & cli/php.ini
+
+        apc.enabled = 1
+        apc.enable_cli = 1
+
+    # Then restart apache2
 
 * Mongo: cf. http://www.mongodb.org/display/DOCS/Ubuntu+and+Debian+packages
 
