@@ -73,9 +73,10 @@ sagi nautilus-script-collection-svn mysql-query-browser rapidsvn virtualbox-ose 
 
 MongoDB :
 http://www.mongodb.org/display/DOCS/Ubuntu+and+Debian+packages (key GPG, dépot ubuntu-upstart
-puis http://www.mongodb.org/display/DOCS/Quickstart+Unix :
-sudo mkdir -p /data/db/
-$ sudo chown `id -u` /data/db
+# Si problèmes uniquement :
+    # cf http://www.mongodb.org/display/DOCS/Quickstart+Unix :
+    # sudo mkdir -p /data/db/
+    $ sudo chown `id -u` /data/db
 
 # Hudson + Phing:
 executing commands listed here : http://hudson-ci.org/debian/
