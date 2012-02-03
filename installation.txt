@@ -196,5 +196,7 @@ upup
 # Open Ubuntu menu using Windows Key
 gconftool-2 --set /apps/metacity/global_keybindings/panel_main_menu --type string "Super_L"
 
+# markdown file icon in Ubuntu is a genesis ROM => change this : http://goo.gl/rzleM
+
 
 
