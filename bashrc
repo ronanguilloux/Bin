@@ -159,7 +159,7 @@ alias jsstyle="seed ~/Bin/js/jslint.js"
 alias lotro=". ~/Bin/lotro.sh"
 alias c='clear'
 alias apache2routes='. ~/Bin/shell/apache2routes.sh'
-
+alias googleBackups = '/opt/backup/googledocs/gdatacopier-2.1.2/gcp.py -o -p -u rguilloux@toog.fr:/all ~/Documents/GoogleDocs/'
 
 # add alias to get latest version of mongo cheatsheet
  alias mongocheat='curl -s http://cheat.errtheblog.com/s/mongo | groovy -e "@Grab(group=/net.sourceforge.nekohtml/, module=/nekohtml/, version=/1.9.14/)import org.cyberneko.html.parsers.SAXParser;println new XmlSlurper(new SAXParser()).parseText(System.in.text).depthFirst().find{ it.@class == /sheet/}.text()"'

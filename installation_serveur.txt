@@ -39,7 +39,7 @@ INSTALLATION
 * Server utils & shell enhancements :
 
     sagi make tree rsync rar unrar zip unzip p7zip p7zip-full p7zip-rar manpages-fr manpages-fr-extra manpages-dev most lynx analog mailx
-    sagi cloc tidy markdown htop sysstat di discus pydf hardinfo
+    sagi cloc tidy markdown htop sysstat di discus pydf hardinfo ack-grep fortunes-ubuntu-server
 
 
 * SVN:

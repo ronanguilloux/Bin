@@ -16,7 +16,7 @@ apt-get powertop
 sagi linux-headers-generic build-essential rar unrar zip unzip p7zip p7zip-full p7zip-rar manpages-fr manpages-fr-extra sun-java6-jre sun-java6-plugin
 
 # Gnome enhancement
-sagi cairo-dock tree gnome-themes gnome-games-extra-data xscreensaver-gl xscreensaver-gl-extra
+sagi cairo-dock tree gnome-themes gnome-games-extra-data xscreensaver-gl xscreensaver-gl-extra gtk-recordmydesktop
 
 # Gnome themes
 sagi gnome-themes-ubuntu gnome-themes-selected gnome-themes-extras community-themes gdm-themes screenlets
@@ -37,7 +37,7 @@ sagi wormux supertux frozen-bubble pingus pioneers
 sagi filezilla gnomebaker brasero gimp vlc mozilla-plugin-vlc xpdf pidgin skype ffmpeg gmountiso bleachbit fslint
 
 # Shell enhancement
-sagi htop fortunes-fr vrms linuxlogo sysstat di discus pydf hardinfo modt lynx
+sagi htop fortunes-fr vrms linuxlogo sysstat di discus pydf hardinfo modt lynx ack-grep
 
 # Sound
 sagi sound-juicer lame gstreamer0.10-plugins-ugly-multiverse
@@ -68,7 +68,7 @@ sagi apache2 apache2-mpm-prefork libapache2-mod-php5 apache2-utils php5 php5-dev
 sagi imagemagick php5-apc php5-xdebug php5-mysql php5-sqlite php5-cli php5-curl php5-suhosin php-pear php5-gd php5-imagick php5-imap php5-xsl php5-common php5-mcrypt php5-memcache php5-ps php5-pspell php5-recode php5-snmp php5-tidy php5-intl php5-geshi
 
 # Dev GUI & tools
-sagi cloc arduino bouml tidy markdown git git-core git-gui git-doc git-svn git-email gitk gitweb
+sagi cloc arduino bouml umbrello dia gaphor tidy markdown git git-core git-gui git-doc git-svn git-email gitk gitweb
 sagi nautilus-script-collection-svn mysql-query-browser rapidsvn virtualbox-ose virtualbox-ose-guest-utils
 
 MongoDB :
