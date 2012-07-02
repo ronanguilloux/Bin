@@ -18,6 +18,9 @@ sagi linux-headers-generic build-essential rar unrar zip unzip p7zip p7zip-full 
 # Gnome enhancement
 sagi cairo-dock tree gnome-themes gnome-games-extra-data xscreensaver-gl xscreensaver-gl-extra gtk-recordmydesktop
 
+# Web dev tools
+sagi gurlchecker linkchecker google-sitemapgen skipfish
+
 # Gnome themes
 sagi gnome-themes-ubuntu gnome-themes-selected gnome-themes-extras community-themes gdm-themes screenlets
 + http://www.clapico.com/2009/11/07/heure/
