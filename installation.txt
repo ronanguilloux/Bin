@@ -40,7 +40,7 @@ sagi wormux supertux frozen-bubble pingus pioneers
 sagi filezilla gnomebaker brasero gimp vlc mozilla-plugin-vlc xpdf pidgin skype ffmpeg gmountiso bleachbit fslint
 
 # Shell enhancement
-sagi htop fortunes-fr vrms linuxlogo sysstat di discus pydf hardinfo modt lynx ack-grep
+sagi htop fortunes-fr vrms linuxlogo sysstat di discus pydf hardinfo modt lynx ack-grep pandoc
 
 # Sound
 sagi sound-juicer lame gstreamer0.10-plugins-ugly-multiverse
