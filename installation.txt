@@ -54,7 +54,7 @@ sagi freemind planner collatinus conduit grsync lyx hamster
 sagi nmapsi4 umit
 
 # Education
-sagi tuxtype celestia planets stellarium googleearth gbrainy
+sagi tuxtype gtypist celestia planets stellarium googleearth gbrainy
 
 # Latex
 # Cf. http://blog.rom1v.com/2009/07/bien-debuter-en-latex-sous-ubuntu/
