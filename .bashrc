@@ -141,17 +141,21 @@ alias vimbashrc="vim ~/.bashrc"
 alias rebashrc=". ~/.bashrc"
 alias svim="sudo vim"
 alias git2cl='git log --graph --pretty=medium --color=never > CHANGELOG'
+alias gitinfo='. /home/ronan/Bin/shell/gitinfo.sh'
+alias gitignore='cat .gitignore'
 alias gpom='git push origin master'
 alias svndifff="svn diff | view -"
 alias svnlogg="svn log -v -r{`date '+%Y-%m-01'`}:{`date '+%Y-%m-31'`} | colordiff"
 alias svn2ch="~/Bin/shell/svn2cl-0.13/svn2cl.sh -o CHANGELOG"
 alias ssarl="sudo service apache2 reload"
 alias ssars="sudo service apache2 restart"
+alias ssms="sudo service mongod start"
 alias shistory='history | grep '
 alias sshmemo="history | grep 'ssh '"
 alias sshlist=". ~/Bin/shell/sshlist.sh"
 alias svnmemo="history | grep 'svn '"
 alias vimmemo="history | grep 'vim '"
+alias gitmemo="history | grep 'git '"
 alias svncommitmemo="history | grep 'svn commit '"
 alias sfmemo="history | grep 'symfony '"
 alias mybackup="cd /opt/backup/manual/ && php backup.php && cd -"
@@ -159,7 +163,9 @@ alias jsstyle="seed ~/Bin/js/jslint.js"
 alias lotro=". ~/Bin/lotro.sh"
 alias c='clear'
 alias apache2routes='. ~/Bin/shell/apache2routes.sh'
-alias googleBackups='/opt/backup/googledocs/gdatacopier-2.1.2/gcp.py -o -u rguilloux@toog.fr:/all ~/Documents/GoogleDocs/'
+alias googleBackup='/opt/backup/googledocs/gdatacopier-2.1.2/gcp.py -o -u rguilloux@toog.fr:/all ~/Documents/GoogleDocs/'
+alias getcomposer='curl -s http://getcomposer.org/installer | php'
+alias whereisraspberrypi="sudo nmap -sV --open 192.168.1.0/25 -p22 | grep 'raspberry'"
 
 # add alias to get latest version of mongo cheatsheet
  alias mongocheat='curl -s http://cheat.errtheblog.com/s/mongo | groovy -e "@Grab(group=/net.sourceforge.nekohtml/, module=/nekohtml/, version=/1.9.14/)import org.cyberneko.html.parsers.SAXParser;println new XmlSlurper(new SAXParser()).parseText(System.in.text).depthFirst().find{ it.@class == /sheet/}.text()"'
