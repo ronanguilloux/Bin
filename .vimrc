@@ -19,12 +19,12 @@ endif
 call pathogen#helptags()
 call pathogen#runtime_append_all_bundles()
 
-
 " ------------------------------------------------------------------------------------
 " Basics
 " ------------------------------------------------------------------------------------
 syntax on
 let mapleader=","               " the leader character
+set shortmess=atI               " no more “Press ENTER or type command to continue”
 set nocompatible                " explicitly get out of vi-compatible mode
 set noerrorbells                " do not make any noise!
 set visualbell                  " use the visual bell
@@ -43,7 +43,6 @@ set title                       " display the default title at the top of the wi
 set wildmenu                    " long autocompletion showing various solutions
 set wildmode=list:longest       " make it longest
 set wildignore=*.o,*.fasl,*.obj,*.bak,*.exe,*.pyc,*.jpg,*.gif,*.png " ignoring this
-set shortmess=atI               " no more “Press ENTER or type command to continue”
 set clipboard+=unnamed          " share windows clipboard
 set fileformats=unix,dos,mac    " support all three, in this order
 set shell=/bin/bash
@@ -91,15 +90,15 @@ set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ %r%{CurDir()}%h\ \ \ Line:\ %l/%L\
 " Folding
 " ------------------------------------------------------------------------------------
 " set foldmarker={,} " Fold C style code (only use this as default if you use a high foldlevel)
-set foldmethod=marker                               " Fold on the marker
-set foldlevel=100 " Don't autofold anything (but I can still fold manually)
-set foldopen=block,hor,mark,percent,quickfix,tag " what movements open folds
-function SimpleFoldText()
-    return getline(v:foldstart).' '
-endfunction
-set foldtext=SimpleFoldText() " Custom fold text function (cleaner than default)
-
 set nofoldenable                                      " Turn off folding
+"set foldmethod=marker                               " Fold on the marker
+"set foldlevel=100 " Don't autofold anything (but I can still fold manually)
+"set foldopen=block,hor,mark,percent,quickfix,tag " what movements open folds
+"function SimpleFoldText()
+"    return getline(v:foldstart).' '
+"endfunction
+"set foldtext=SimpleFoldText() " Custom fold text function (cleaner than default)
+
 
 " ------------------------------------------------------------------------------------
 " Filetype : enable loading the plugins + indent file for specific file types
