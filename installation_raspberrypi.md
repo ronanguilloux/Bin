@@ -1,3 +1,4 @@
+Easy SD Card setup: http://elinux.org/RPi_Easy_SD_Card_Setup 
 
 Find out where is the raspberry pi in the LAN
 
@@ -33,12 +34,13 @@ And then add (under pi):
 then CTRL+O to save & CTRL+X to exit from nano editor 
 (or CTRL+K then CTRL+X to save & exit from joe)
 
+Then exit & re-connect via ssh using myLogin
+
 Linux upgrade
 
     sudo apt-get update
     sudo apt-get upgrade
     sudo apt-get dist-upgrade
-
 
 Essential command-line based tools
 
@@ -46,7 +48,11 @@ Essential command-line based tools
 
 Dev tools & servers
 
-    sudo apt-get install php5 php5-dev php-apc php5-xdebug php5-sqlite php5-cli php5-curl php-pear php5-common php5-mcrypt php5-ps php5-pspell php5-tidy php5-intl apache2 apache2-mpm-prefork libapache2-mod-php5 apache2-utils mysql-server phpmyadmin
+    sudo apt-get install imagemagick php5 php5-dev php-apc php5-xdebug php5-mysql php5-sqlite php5-cli php5-curl php-pear php5-common php5-mcrypt php5-ps php5-pspell php5-tidy php5-intl php5-gd php5-imagick php5-imap php5-xsl php5-memcache php5-recode php5-snmp php-geshi apache2 apache2-mpm-prefork libapache2-mod-php5 apache2-utils mysql-server phpmyadmin
+
+Adding current user to www-data group
+
+    sudo adduser $LOGNAME www-data
 
 Copy your `.ssh/id_rsa.pub` local key on the raspi in a `.ssh/authorized_keys` file
 
@@ -83,4 +89,31 @@ Then mount it (will always be mounted after that)
 OK, at this point we need a disk space usage overview :
 
     df -h
+
+Set up git
+
+    git config --global user.name "Your Name Here"
+    git config --global user.email "your_email@example.com"
+
+Install dotfiles (will conserve existing conf)
+
+    git clone git@github.com:ronanguilloux/dotfiles.git
+    dotfiles/install.sh
+
+PHP-quality related tools (see http://phpqatools.org/)
+will install phpunit, phploc, phpcpd, phpcs, pdepend, phpmd, PHP_CodeBrowser, phpdcd
+
+    sudo pear config-set auto_discover 1
+    sudo pear install pear.phpqatools.org/phpqatools
+
+Apache2 mods
+
+    sudo a2enmod rewrite
+    sudo a2enmod headers
+    sudo a2enmod deflate
+    sudo a2enmod expires
+    sudo a2enmod setenvif
+    sudo service apache2 restart
+
+
 

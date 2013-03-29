@@ -41,12 +41,10 @@ Installing various PHP-related tools in /usr/local/bin
     curl -s http://getcomposer.org/installer | php
     mv composer.phar composer
     chmod +x composer
-    composer self-update
 
     curl http://pear2.php.net/pyrus.phar -O
     mv pyrus.phar pyrus
     chmod +x pyrus
-    pyrus install pear/PHP_CodeSniffer
 
 PHP-quality related tools (see http://phpqatools.org/)
 will install phpunit, phploc, phpcpd, phpcs, pdepend, phpmd, PHP_CodeBrowser, phpdcd
