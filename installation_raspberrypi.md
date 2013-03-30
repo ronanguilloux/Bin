@@ -1,6 +1,13 @@
-Easy SD Card setup: http://elinux.org/RPi_Easy_SD_Card_Setup 
+This conf was checked OK on a 2013-02-09-wheezy-raspbian.img distro 
+writted on a 4Go SD-CARD
+with a Wifi dongle: D-Link System DWA-131 802.11n Wireless N Nano Adapter(rev.A1) [Realtek RTL8192SU]
 
-Find out where is the raspberry pi in the LAN
+Easy detailled SD Card setup: http://elinux.org/RPi_Easy_SD_Card_Setup 
+
+Plug the RJ45 connector (wifi conf is setted up later in this file)
+
+From a remote SSH client, find out where is the raspberry pi in the LAN
+(openssh server is enabled by default)
 
     sudo nmap -sV --open 192.168.0.0/25 -p22
 
@@ -41,10 +48,66 @@ Linux upgrade
     sudo apt-get update
     sudo apt-get upgrade
     sudo apt-get dist-upgrade
+    sudo apt-get install vim
 
-Essential command-line based tools
+Wifi: device check
 
-    sudo apt-get install curl tree htop mailutils fortunes-fr vrms linuxlogo sysstat di discus pydf hardinfo lynx ack-grep pandoc most exuberant-ctags build-essential manpages-fr manpages-fr-dev manpages-fr-extra  git git-core git-email git-doc tig vim markdown xclip p7zip-full analog cloc tidy
+    lsusb
+
+The D-Link System DWA-131 802.11n Wireless N Nano Adapter(rev.A1) [Realtek RTL8192SU]
+has been tested OK on a 2013-02-09-wheezy-raspbian.img ISO distro
+with the following configuration.
+
+This command should return various WIFI networks around you:
+
+    sudo iwconfig scanning
+
+Wifi: interfaces
+
+    sudo /etc/network/interfaces
+
+Content should be: 
+
+    auto lo
+
+    iface lo inet loopback
+    iface eth0 inet dhcp
+
+    allow-hotplug wlan0
+    auto wlan0
+    iface wlan0 inet dhcp
+    wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf
+
+Wifi: WPA conf
+
+    sudo /etc/wpa_supplicant/wpa_supplicant.conf
+
+Content should be: 
+
+    ctrl_interface=/var/run/wpa_supplicant 
+    update_config=1
+    network={
+        ssid="WIFI_NETWORK_NAME"
+        proto=WPA
+        key_mgmt=WPA-PSK
+        pairwise=CCMP TKIP
+        group=CCMP TKIP
+        psk="WIFI_PASSWORD"
+    }
+
+Then unplug the RJ45 connector & reboot 
+
+To retrieve the raspi in the network:
+
+    sudo nmap -sV --open 192.168.0.0/25 -p22
+
+Now you can ssh using your myLogin you just setted up 
+
+    ssh myLogin@[RASPBERRY.PI.IP]
+
+Installing essential command-line based tools
+
+    sudo apt-get install curl tree htop mailutils fortunes-fr vrms linuxlogo sysstat di discus pydf hardinfo lynx ack-grep pandoc most exuberant-ctags build-essential manpages-fr manpages-fr-dev manpages-fr-extra  git git-core git-email git-doc tig markdown xclip p7zip-full analog cloc tidy
 
 Dev tools & servers
 
