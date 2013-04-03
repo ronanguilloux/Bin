@@ -30,6 +30,8 @@ Dev
 
     sudo apt-get install imagemagick php-apc php5-xdebug php5-mysql php5-sqlite php5-cli php5-curl php5-suhosin php-pear php5-gd php5-imagick php5-imap php5-xsl php5-common php5-mcrypt php5-memcache php5-ps php5-pspell php5-recode php5-snmp php5-tidy php5-intl php-geshi
 
+    sudo apt-get install golang
+
 Adding current user to www-data group
 
     sudo adduser $LOGNAME www-data
