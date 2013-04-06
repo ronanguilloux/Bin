@@ -61,6 +61,13 @@ will install phpunit, phploc, phpcpd, phpcs, pdepend, phpmd, PHP_CodeBrowser, ph
     sudo pear install pear.phpqatools.org/phpqatools
     sudo pear install pear.phpunit.de/phpdcd-0.9.3
 
+Find PEAR install dir & add Symfony2 Standards
+
+    pear config-show | grep php_dir 
+    cd /usr/share/php/PHP/CodeSniffer/Standards/
+    sudo git clone git://github.com/opensky/Symfony2-coding-standard.git Symfony2 
+    sudo phpcs --config-set default_standard Symfony2
+
 Apache2 mods
 
     sudo a2enmod rewrite
