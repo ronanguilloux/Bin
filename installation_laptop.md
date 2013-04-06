@@ -10,7 +10,7 @@ Install minimal swissknife tools
 
 Usefull non-free-related stuff
 
-	sudo apt-get install ubuntu-restricted-extras non-free-codecs libdvdcss2 faac faad ffmpeg ffmpeg2theora flac gstreamer0.10-ffmpeg gstreamer0.10-plugins-bad gstreamer0.10-plugins-ugly icedax id3v2 lame libflac++6 libjpeg-progs libmpeg3-1 mencoder mjpegtools mp3gain mpeg2dec mpeg3-utils mpegdemux mpg123 mpg321 regionset sox uudeview vorbis-tools x264 arj lha p7zip p7zip-full rar unrar zip unzip p7zip p7zip-full p7zip-rar unace-nonfree
+	sudo apt-get install ubuntu-restricted-extras non-free-codecs libdvdcss2 faac faad ffmpeg ffmpeg2theora flac gstreamer0.10-ffmpeg gstreamer0.10-plugins-bad gstreamer0.10-plugins-ugly icedax id3v2 lame libflac++6 libjpeg-progs libmpeg3-1 mencoder mjpegtools mp3gain mpeg2dec mpeg3-utils mpegdemux mpg123 mpg321 regionset sox uudeview vorbis-tools x264 arj lha rar unrar zip unzip p7zip p7zip-full p7zip-rar unace-nonfree
 
 Shell enhancement
 
@@ -90,6 +90,8 @@ Web dev tools
 
     sudo apt-get install gurlchecker linkchecker google-sitemapgen skipfish
 
+MongoDB: cf. http://docs.mongodb.org/manual/tutorial/install-mongodb-on-ubuntu/
+
 Office stuff
 
     sudo apt-get install freemind planner collatinus conduit grsync hamster
@@ -114,9 +116,16 @@ Auto-mounting NTFS Windows partition
 Install "CompizConfig Settings Manager" from the Ubuntu Apps Directory
 * https://apps.ubuntu.com/cat/applications/pysdm/
 
+# Music
 
-Adding current user to www-data group
+    sudo apt-get install solfege audacity alsa-oss banshee banshee-extension-ubuntuonemusicstore songbird
 
-    sudo adduser $LOGNAME www-data
+# Dell 1555 sound output
+    
+    sudo vim /etc/modprobe.d/alsa-base.conf
+	=> Add :
+		# Dell 1555 sound
+		options snd-hda-intel model=dell-m6
+
 
 
