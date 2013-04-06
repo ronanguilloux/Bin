@@ -1,0 +1,37 @@
+#!/bin/sh
+# cf. http://www.galipe.net/articles/2011/02/
+# cf. http://castyour.net/dev-machine-lamp-stop-start-restart
+
+case "$1" in
+  start)
+#        /etc/init.d/apache2 start
+#        /etc/init.d/mysql start
+        service apache2 start
+        service mysql start
+        ;;
+  stop)
+#        /etc/init.d/apache2 stop
+#        /etc/init.d/mysql stop
+        service apache2 stop
+        service mysql stop
+        ;;
+  reload)
+#        /etc/init.d/apache2 reload
+#        /etc/init.d/mysql reload
+        service apache2 reload
+        service mysql reload
+        ;;
+  restart)
+#        /etc/init.d/apache2 restart
+#        /etc/init.d/mysql restart
+        service apache2 restart
+        service mysql restart
+        ;;
+  *)
+        echo "Usage: lamp {start|stop|restart|reload}"
+        exit 1
+        ;;
+esac
+
+exit 0
+
