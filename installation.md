@@ -48,6 +48,12 @@ Installing various PHP-related tools in /usr/local/bin
     mv pyrus.phar pyrus
     chmod +x pyrus
 
+    cd /usr/local/bin/
+    curl http://cs.sensiolabs.org/get/php-cs-fixer.phar -O
+    mv php-cs-fixer.phar php-cs-fixer
+    chmod +x php-cs-fixer 
+    php-cs-fixer self-update
+
 PHP-quality related tools (see http://phpqatools.org/)
 will install phpunit, phploc, phpcpd, phpcs, pdepend, phpmd, PHP_CodeBrowser, phpdcd
 
