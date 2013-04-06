@@ -1,4 +1,8 @@
 
+Set azerty keyboard
+
+    sudo loadkeys fr
+    sudo dpkg-reconfigure keyboard-configuration
 
 Removing ads
 	
@@ -8,13 +12,25 @@ Install minimal swissknife tools
 
 	sudo apt-get install vim google-chrome-stable
 
+Install minimal security tools
+
+    sudo apt-get install fail2ban analog mailx rsync openssh-server 
+
 Usefull non-free-related stuff
 
 	sudo apt-get install ubuntu-restricted-extras non-free-codecs libdvdcss2 faac faad ffmpeg ffmpeg2theora flac gstreamer0.10-ffmpeg gstreamer0.10-plugins-bad gstreamer0.10-plugins-ugly icedax id3v2 lame libflac++6 libjpeg-progs libmpeg3-1 mencoder mjpegtools mp3gain mpeg2dec mpeg3-utils mpegdemux mpg123 mpg321 regionset sox uudeview vorbis-tools x264 arj lha rar unrar zip unzip p7zip p7zip-full p7zip-rar unace-nonfree
 
+Date
+
+    sudo dpkg-reconfigure tzdata
+    sudo vim /etc/environment
+        +1 ligne :
+            TZ="Europe/Paris"
+
+
 Shell enhancement
 
-    sudo apt-get install curl tree htop fortunes-fr vrms linuxlogo sysstat di discus pydf hardinfo lynx ack-grep pandoc most exuberant-ctags linux-headers-generic build-essential manpages-fr manpages-fr-extra
+    sudo apt-get install curl tree htop fortunes-fr vrms linuxlogo sysstat di discus pydf hardinfo lynx ack-grep pandoc most exuberant-ctags linux-headers-generic build-essential manpages-fr manpages-fr-extra manpages-dev
 
 Nautilus enhancement
 
@@ -35,6 +51,63 @@ Dev
 Adding current user to www-data group
 
     sudo adduser $LOGNAME www-data
+
+Set PHP Timezone
+
+    sudo vim /etc/php5/apache2/php.ini /etc/php5/cli/php.ini -p
+    => date.timezone = Europe/Paris
+
+Set suhosin
+
+    sudo vim /etc/php5/conf.d/suhosin.ini
+
+        # add lines:
+
+            # Source : //phpmyadmin/Documentation.html#faq1_38
+            suhosin.request.max_vars = 2048
+            suhosin.post.max_vars = 2048
+            suhosin.request.max_array_index_length = 256
+            suhosin.post.max_array_index_length = 256
+            suhosin.request.max_totalname_length = 8192
+            suhosin.post.max_totalname_length = 8192
+            #suhosin.sql.bailout_on_error needs to be disabled (the default)
+            #suhosin.log.* should not include SQL, otherwise you get big slowdown
+            # see also SuhosinDisableWarning directive : //phpmyadmin/Documentation.html#cfg_SuhosinDisableWarning
+
+Set PHP for phar archives & APC:
+
+    sudo vim /etc/php5/apache2/php.ini /etc/php5/cli/php.ini -p
+
+    # modify [Phar]:
+
+        [Phar]
+        ; http://php.net/phar.readonly
+        phar.readonly = Off
+
+        ; http://php.net/phar.require-hash
+        phar.require_hash = Off
+
+        detect_unicode = Off
+        suhosin.executor.include.whitelist = phar
+
+    # Add:
+
+        apc.enabled = 1
+        apc.enable_cli = 1
+
+Mysql backup (in /home/toog/bin/mysqlbackup.sh)
+ 
+    sudo mkdir /var/backups/mysql
+    sudo chown toog:toog /var/backups/mysql
+    sudo chmod 775 /var/backups/mysql
+    # récupérer https://gist.github.com/1595563 dans /home/toog/bin/mysqlbackup.sh
+    crontab -e (de toog)
+    + 1 ligne:
+        0 2 * * *	/home/toog/bin/mysqlbackup.sh >> /home/toog/bin/mysqlbackup.sh.log
+
+Workaround for the php5-sqlite bug in Oneiric : (cf. http://goo.gl/Iaks4)
+
+    sudo mv /etc/php5/conf.d/sqlite.ini /etc/php5/conf.d/sqlite.ini.bugged
 
 Installing various PHP-related tools in /usr/local/bin
 
@@ -84,13 +157,26 @@ Vhost GIT related mods
 
 Dev GUI & tools
 
-    sudo apt-get install tidy markdown git git-core git-gui git-doc git-svn git-email gitk tig meld virtualbox-ose virtualbox-ose-guest-utils cloc umbrello dia gaphor
+    sudo apt-get install tidy markdown git git-core git-gui git-doc git-svn git-email gitk gitweb tig meld virtualbox-ose virtualbox-ose-guest-utils cloc umbrello dia gaphor
+
+GIT configuration: http://progit.org/book/fr/ch4-4.html
 
 Web dev tools
 
     sudo apt-get install gurlchecker linkchecker google-sitemapgen skipfish
 
 MongoDB: cf. http://docs.mongodb.org/manual/tutorial/install-mongodb-on-ubuntu/
+
+Mongo backups
+
+    sudo mkdir /var/backups/mongo
+    sudo chown toog:toog /var/backups/mongo
+    sudo chmod 775 /var/backups/mongo
+    crontab -e (de toog)
+    + 1 ligne:
+        30 2 * * *	mongodump --directoryperdb -o /var/backups/mongo/`date +'%u'` > /home/toog/bin/mongobackup.cron.log
+
+
 
 Office stuff
 
