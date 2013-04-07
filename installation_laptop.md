@@ -3,7 +3,6 @@ Ubuntu 12.10 installation
 
 Checked OK for a DELL 1555 laptop
 
-
 Set azerty keyboard
 
     sudo loadkeys fr
@@ -181,8 +180,6 @@ Mongo backups
     + 1 ligne:
         30 2 * * *	mongodump --directoryperdb -o /var/backups/mongo/`date +'%u'` > /home/toog/bin/mongobackup.cron.log
 
-
-
 Office stuff
 
     sudo apt-get install freemind planner collatinus conduit grsync hamster
@@ -212,15 +209,10 @@ Music
     sudo apt-get install solfege audacity alsa-oss banshee banshee-extension-ubuntuonemusicstore songbird
 
 
-DELL-specific workaround
+DELL-specific workarounds
+-------------------------
 
-Dell 1555 sound output
-    
-    sudo vim /etc/modprobe.d/alsa-base.conf
-	=> Add :
-		# Dell 1555 sound
-		options snd-hda-intel model=dell-m6
-
+http://doc.ubuntu-fr.org/dell_studio_1555
 
 Dell 1555 ATI graphics drivers: 
 https://help.ubuntu.com/community/BinaryDriverHowto/ATI#WORKAROUND
