@@ -1,3 +1,8 @@
+Ubuntu 12.10 installation
+=========================
+
+Checked OK for a DELL 1555 laptop
+
 
 Set azerty keyboard
 
@@ -202,11 +207,14 @@ Auto-mounting NTFS Windows partition
 Install "CompizConfig Settings Manager" from the Ubuntu Apps Directory
 * https://apps.ubuntu.com/cat/applications/pysdm/
 
-# Music
+Music
 
     sudo apt-get install solfege audacity alsa-oss banshee banshee-extension-ubuntuonemusicstore songbird
 
-# Dell 1555 sound output
+
+DELL-specific workaround
+
+Dell 1555 sound output
     
     sudo vim /etc/modprobe.d/alsa-base.conf
 	=> Add :
@@ -214,4 +222,14 @@ Install "CompizConfig Settings Manager" from the Ubuntu Apps Directory
 		options snd-hda-intel model=dell-m6
 
 
+Dell 1555 ATI graphics drivers: 
+https://help.ubuntu.com/community/BinaryDriverHowto/ATI#WORKAROUND
+The current WORKAROUND was graciously provided by Nick Andrik:
 
+    sudo apt-get purge fglrx*
+    sudo add-apt-repository ppa:andrikos/ppa
+    sudo apt-get update
+    sudo apt-get -y upgrade
+    sudo apt-get --reinstall install xserver-xorg-video-intel
+    sudo apt-get -y install fglrx-updates fglrx-amdcccle-updates
+    sudo aticonfig --initial -f
