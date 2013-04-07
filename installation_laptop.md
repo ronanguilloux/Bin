@@ -34,7 +34,7 @@ Date
 
 Shell enhancement
 
-    sudo apt-get install curl tree htop fortunes-fr vrms linuxlogo sysstat di discus pydf hardinfo lynx ack-grep pandoc most exuberant-ctags linux-headers-generic build-essential manpages-fr manpages-fr-extra manpages-dev
+    sudo apt-get install curl tree htop fortunes-fr vrms linuxlogo sysstat di discus pydf hardinfo lynx ack-grep pandoc most exuberant-ctags linux-headers-generic build-essential manpages-fr manpages-fr-extra manpages-dev cowsay
 
 Nautilus enhancement
 

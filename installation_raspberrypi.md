@@ -107,7 +107,7 @@ Now you can ssh using your myLogin you just setted up
 
 Installing essential command-line based tools
 
-    sudo apt-get install curl tree htop mailutils fortunes-fr vrms linuxlogo sysstat di discus pydf hardinfo lynx ack-grep pandoc most exuberant-ctags build-essential manpages-fr manpages-fr-dev manpages-fr-extra  git git-core git-email git-doc tig markdown xclip p7zip-full analog cloc tidy
+    sudo apt-get install curl tree htop mailutils fortunes-fr vrms linuxlogo sysstat di discus pydf hardinfo lynx ack-grep pandoc most exuberant-ctags build-essential manpages-fr manpages-fr-dev manpages-fr-extra  git git-core git-email git-doc tig markdown xclip p7zip-full analog cloc tidy cowsay
 
 Dev tools & servers
 
