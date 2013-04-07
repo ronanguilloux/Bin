@@ -214,14 +214,9 @@ DELL-specific workarounds
 
 http://doc.ubuntu-fr.org/dell_studio_1555
 
-Dell 1555 ATI graphics drivers: 
-https://help.ubuntu.com/community/BinaryDriverHowto/ATI#WORKAROUND
-The current WORKAROUND was graciously provided by Nick Andrik:
+Fan workaround : http://www.techytalk.info/ubuntu-open-source-ati-radeon-driver-power-usage-tweaks/
 
-    sudo apt-get purge fglrx*
-    sudo add-apt-repository ppa:andrikos/ppa
-    sudo apt-get update
-    sudo apt-get -y upgrade
-    sudo apt-get --reinstall install xserver-xorg-video-intel
-    sudo apt-get -y install fglrx-updates fglrx-amdcccle-updates
-    sudo aticonfig --initial -f
+Dell 1555 ATI graphics drivers: 
+
+this DOESN'T work: https://help.ubuntu.com/community/BinaryDriverHowto/ATI#WORKAROUND
+
