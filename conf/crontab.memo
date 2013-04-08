@@ -1,0 +1,69 @@
+# Edit this file to introduce tasks to be run by cron.
+# 
+# Each task to run has to be defined through a single line
+# indicating with different fields when the task will be run
+# and what command to run for the task
+# 
+# To define the time you can provide concrete values for
+# minute (m), hour (h), day of month (dom), month (mon),
+# and day of week (dow) or use '*' in these fields (for 'any').# 
+# Notice that tasks will be started based on the cron's system
+# daemon's notion of time and timezones.
+# 
+# Output of the crontab jobs (including errors) is sent through
+# email to the user the crontab file belongs to (unless redirected).
+# 
+# For example, you can run a backup of all your user accounts
+# at 5 a.m every week with:
+# 0 5 * * 1 tar -zcf /var/backups/home.tgz /home/
+# 
+# For more information see the manual pages of crontab(5) and cron(8)
+# 
+# m h  dom mon dow   command
+
+MAILTO=rguilloux@toog.fr
+
+# Backups
+0 13 * * * /usr/bin/php /opt/backup/manual/backup.php
+55 17 * * * /usr/bin/php /opt/backup/manual/backup.php
+
+# Timer warning
+20 12 * * * DISPLAY=:0.0 /usr/bin/notify-send --icon=appointment -t 2 -u low "12h20" "Plus que 10 minutes"
+25 12 * * * DISPLAY=:0.0 /usr/bin/notify-send --icon=appointment -t 2 -u normal "12h25" "Plus que 5 minutes"
+26 12 * * * DISPLAY=:0.0 /usr/bin/notify-send --icon=appointment -t 2 -u normal "12h26" "Plus que 4 minutes"
+27 12 * * * DISPLAY=:0.0 /usr/bin/notify-send --icon=appointment -t 2 -u normal "12h27" "Plus que 3 minutes"
+28 12 * * * DISPLAY=:0.0 /usr/bin/notify-send --icon=appointment -t 2 -u normal "12h28" "Plus que 2 minutes"
+29 12 * * * DISPLAY=:0.0 /usr/bin/notify-send --icon=appointment -t 2 -u normal "12h29" "Plus que 1 minute"
+30 12 * * * DISLPAY=:0.0 /usr/bin/notify-send --icon=appointment -t 2 -u critical "12h30" "TIME OUT"
+30 12 * * * aplay -q /home/ronan/Bin/shell/sounds/food_order.wav
+31 12 * * * DISLPAY=:0.0 /usr/bin/notify-send --icon=appointment -t 2 -u critical "12h31" "TIME OUT plus 1"
+32 12 * * * DISLPAY=:0.0 /usr/bin/notify-send --icon=appointment -t 2 -u critical "12h32" "TIME OUT plus 2"
+33 12 * * * DISLPAY=:0.0 /usr/bin/notify-send --icon=appointment -t 2 -u critical "12h33" "TIME OUT plus 3"
+34 12 * * * DISLPAY=:0.0 /usr/bin/notify-send --icon=appointment -t 2 -u critical "12h34" "TIME OUT plus 4"
+35 12 * * * DISLPAY=:0.0 /usr/bin/notify-send --icon=appointment -t 2 -u critical "12h35" "TIME OUT plus 5"
+40 12 * * * DISLPAY=:0.0 /usr/bin/notify-send --icon=appointment -t 2 -u critical "12h40" "TIME OUT plus 10"
+
+50 17 * * * DISPLAY=:0.0 /usr/bin/notify-send --icon=appointment -t 2 -u low "17h50" "Plus que 10 minutes"
+55 17 * * * DISPLAY=:0.0 /usr/bin/notify-send --icon=appointment -t 2 -u normal "17h55" "Plus que 5 minutes"
+56 17 * * * DISPLAY=:0.0 /usr/bin/notify-send --icon=appointment -t 2 -u normal "17h56" "Plus que 4 minutes"
+57 17 * * * DISPLAY=:0.0 /usr/bin/notify-send --icon=appointment -t 2 -u normal "17h57" "Plus que 3 minutes"
+58 17 * * * DISPLAY=:0.0 /usr/bin/notify-send --icon=appointment -t 2 -u normal "17h58" "Plus que 2 minutes"
+59 17 * * * DISPLAY=:0.0 /usr/bin/notify-send --icon=appointment -t 2 -u normal "17h59" "Plus que 1 minute"
+0 18 * * * DISPLAY=:0.0 /usr/bin/notify-send --icon=appointment -t 2 -u critical "18h" "TIME OUT"
+0 18 * * * aplay -q /home/ronan/Bin/shell/sounds/timeout.wav
+1 18 * * * DISPLAY=:0.0 /usr/bin/notify-send --icon=appointment -t 2 -u critical "18h01" "TIME OUT plus 1"
+2 18 * * * DISPLAY=:0.0 /usr/bin/notify-send --icon=appointment -t 2 -u critical "18h02" "TIME OUT plus 2"
+3 18 * * * DISPLAY=:0.0 /usr/bin/notify-send --icon=appointment -t 2 -u critical "18h03" "TIME OUT plus 3"
+4 18 * * * DISPLAY=:0.0 /usr/bin/notify-send --icon=appointment -t 2 -u critical "18h04" "TIME OUT plus 4"
+5 18 * * * DISPLAY=:0.0 /usr/bin/notify-send --icon=appointment -t 2 -u critical "18h05" "TIME OUT plus 5"
+10 18 * * * DISPLAY=:0.0 /usr/bin/notify-send --icon=appointment -t 2 -u critical "18h10" "TIME OUT plus 10"
+
+50 22 * * * DISPLAY=:0.0 /usr/bin/notify-send --icon=appointment -t 2 -u low "22h50" "Plus que 10 minutes"
+55 22 * * * DISPLAY=:0.0 /usr/bin/notify-send --icon=appointment -t 2 -u normal "22h55" "Plus que 5 minutes"
+0 23 * * * DISPLAY=:0.0 /usr/bin/notify-send --icon=appointment -t 2 -u critical "23h" "TIME OUT"
+05 23 * * * DISPLAY=:0.0 /usr/bin/notify-send --icon=appointment -t 2 -u critical "23h05" "TIME OUT plus 5"
+10 23 * * * DISPLAY=:0.0 /usr/bin/notify-send --icon=appointment -t 2 -u critical "23h10" "TIME OUT plus 10"
+15 23 * * * DISPLAY=:0.0 /usr/bin/notify-send --icon=appointment -t 2 -u critical "23h15" "TIME OUT plus 15"
+20 23 * * * DISPLAY=:0.0 /usr/bin/notify-send --icon=appointment -t 2 -u critical "23h20" "TIME OUT plus 20"
+30 23 * * * DISPLAY=:0.0 /usr/bin/notify-send --icon=appointment -t 2 -u critical "23h30" "TIME OUT plus 30"
+
