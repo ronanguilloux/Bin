@@ -1,0 +1,33 @@
+#!/bin/sh
+### BEGIN INIT INFO
+# Provides: scriptname
+# Required-Start: $remote_fs $syslog
+# Required-Stop: $remote_fs $syslog
+# Default-Start: 2 3 4 5
+# Default-Stop: 0 1 6
+# Short-Description: Start daemon at boot time
+# Description: Enable service provided by daemon.
+
+### END INIT INFO
+
+
+# ATI power save
+# source: http://www.techytalk.info/ubuntu-open-source-ati-radeon-driver-power-usage-tweaks/
+
+# Add statup links
+# sudo chmod +x /etc/init.d/ati-power-save 
+# sudo update-rc.d ati-power-save defaults 99
+
+# Remove startup links
+# sudo update-rc.d ati-power-save remove
+
+
+# Dynpm method
+#echo dynpm > /sys/class/drm/card0/device/power_method
+
+# Alternative:  Profile method
+echo profile > /sys/class/drm/card0/device/power_method
+# 1. "default" 2. "auto" 3. "low" 4. "high".
+echo low > /sys/class/drm/card0/device/power_profile
+
+
