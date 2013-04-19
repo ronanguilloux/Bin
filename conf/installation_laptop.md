@@ -121,7 +121,7 @@ Workaround for the php5-sqlite bug in Oneiric : (cf. http://goo.gl/Iaks4)
 
     sudo mv /etc/php5/conf.d/sqlite.ini /etc/php5/conf.d/sqlite.ini.bugged
 
-Installing various PHP-related tools in ~/bin, wich is part of £PATH (see .bashrc conf in https://github/com/ronanguilloux/dotfiles)
+Installing various PHP-related tools in ~/bin, wich is part of £PATH (see .bashrc conf in https://github.com/ronanguilloux/dotfiles)
 
     mkdir ~/bin
     cd ~/bin
