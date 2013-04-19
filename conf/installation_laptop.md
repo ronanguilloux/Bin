@@ -14,11 +14,19 @@ Removing ads
 
 Install minimal swissknife tools
 
+only before Ubuntu 12.10:
+
+    wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+    sudo sh -c 'echo "deb https://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+    sudo apt-get update
+
+then:
+
 	sudo apt-get install vim google-chrome-stable
 
 Install minimal security tools
 
-    sudo apt-get install fail2ban analog mailx rsync openssh-server 
+    sudo apt-get install fail2ban analog mailutils rsync openssh-server 
 
 Usefull non-free-related stuff
 
@@ -67,16 +75,16 @@ Set suhosin
 
         # add lines:
 
-            # Source : //phpmyadmin/Documentation.html#faq1_38
+            ; Source : //phpmyadmin/Documentation.html#faq1_38
             suhosin.request.max_vars = 2048
             suhosin.post.max_vars = 2048
             suhosin.request.max_array_index_length = 256
             suhosin.post.max_array_index_length = 256
             suhosin.request.max_totalname_length = 8192
             suhosin.post.max_totalname_length = 8192
-            #suhosin.sql.bailout_on_error needs to be disabled (the default)
-            #suhosin.log.* should not include SQL, otherwise you get big slowdown
-            # see also SuhosinDisableWarning directive : //phpmyadmin/Documentation.html#cfg_SuhosinDisableWarning
+            ;suhosin.sql.bailout_on_error needs to be disabled (the default)
+            ;suhosin.log.* should not include SQL, otherwise you get big slowdown
+            ; see also SuhosinDisableWarning directive : //phpmyadmin/Documentation.html#cfg_SuhosinDisableWarning
 
 Set PHP for phar archives & APC:
 
@@ -113,10 +121,10 @@ Workaround for the php5-sqlite bug in Oneiric : (cf. http://goo.gl/Iaks4)
 
     sudo mv /etc/php5/conf.d/sqlite.ini /etc/php5/conf.d/sqlite.ini.bugged
 
-Installing various PHP-related tools in /usr/local/bin
+Installing various PHP-related tools in ~/bin, wich is part of £PATH (see .bashrc conf in https://github/com/ronanguilloux/dotfiles)
 
-    sudo chown $LOGNAME:$LOGNAME /usr/local/bin -R
-    cd /usr/local/bin
+    mkdir ~/bin
+    cd ~/bin
     curl -s http://getcomposer.org/installer | php
     mv composer.phar composer
     chmod +x composer
@@ -125,7 +133,6 @@ Installing various PHP-related tools in /usr/local/bin
     mv pyrus.phar pyrus
     chmod +x pyrus
 
-    cd /usr/local/bin/
     curl http://cs.sensiolabs.org/get/php-cs-fixer.phar -O
     mv php-cs-fixer.phar php-cs-fixer
     chmod +x php-cs-fixer 
