@@ -7,8 +7,11 @@
 * @version 1.0
 */
 
+
+// Alternative: http://www.wordreference.com/docs/api.aspx
+
 // URL example : http://www.googleapis.com/language/translate/v2?key=AIzaSyBoh0w_7SYPgEkpKAq5uvIcpLfXyX8efAs&q=flowers&source=en&target=fr&callback=handleResponse
-// shortcut in ~/.bashrc : alias gtr='php ~/shell/googleTranslate.php' 
+// shortcut in ~/.bashrc : alias gtr='php ~/shell/googleTranslate.php'
 // usage  : gtr slug
 $key = 'AIzaSyBoh0w_7SYPgEkpKAq5uvIcpLfXyX8efAs';
 $word = trim($argv[1]);
