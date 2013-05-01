@@ -1,4 +1,4 @@
-Ubuntu 12.10 installation
+Ubuntu 13.04 installation
 =========================
 
 Checked OK for a DELL 1555 laptop
@@ -165,6 +165,11 @@ Vhost GIT related mods
 
     sudo a2enmod dav
     sudo a2enmod dav_fs
+
+Google-Chrome custom css for console
+
+    cd ~/.config/google-chrome/Default/User\ StyleSheets/
+    curl -O https://raw.github.com/Calvein/solarized-dark-skin-chrome-devtools/master/Custom.css
 
 Dev GUI & tools
 
