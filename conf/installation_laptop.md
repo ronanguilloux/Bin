@@ -166,6 +166,16 @@ Vhost GIT related mods
     sudo a2enmod dav
     sudo a2enmod dav_fs
 
+NodeJs 
+(as of Node.js v0.10.0, the nodejs package from Chris Lea's repo includes both npm and nodejs-dev)
+
+    sudo apt-get update
+    sudo apt-get install python-software-properties python g++ make
+    sudo add-apt-repository ppa:chris-lea/node.js
+    sudo apt-get update
+    sudo apt-get install nodejs
+
+
 Google-Chrome custom css for console
 
     cd ~/.config/google-chrome/Default/User\ StyleSheets/
