@@ -63,6 +63,12 @@ Dev
 Adding current user to www-data group
 
     sudo adduser $LOGNAME www-data
+    
+
+SSH security
+
+    mkdir ~/.ssh
+    chmod 700 ~/.ssh -R
 
 Set PHP Timezone
 
