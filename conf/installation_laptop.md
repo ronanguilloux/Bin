@@ -143,7 +143,7 @@ Installing various PHP-related tools in ~/bin, wich is part of £PATH (see .bash
     mv php-cs-fixer.phar php-cs-fixer
     chmod +x php-cs-fixer 
     php-cs-fixer self-update
-
+    
 PHP-quality related tools (see http://phpqatools.org/)
 will install phpunit, phploc, phpcpd, phpcs, pdepend, phpmd, PHP_CodeBrowser, phpdcd
 
@@ -192,6 +192,13 @@ Dev GUI & tools
     sudo apt-get install tidy markdown git git-core git-gui git-doc git-svn git-email gitk gitweb tig meld virtualbox-ose virtualbox-ose-guest-utils cloc umbrello dia gaphor
 
 GIT configuration: http://progit.org/book/fr/ch4-4.html
+
+Pure unicorn-ready git awesomeness    
+
+    cd ~/bin
+    curl -O https://github.com/erikaheidi/fabgit/blob/master/fabgit.phar?raw=true
+    mv fabgit.phar fabgit
+    chmod +x fabgit
 
 Web dev tools
 
