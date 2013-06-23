@@ -1,0 +1,18 @@
+Vagrant::Config.run do |config|
+    config.vm.box = "raring64"
+    config.vm.box_url = "http://cloud-images.ubuntu.com/vagrant/raring/current/raring-server-cloudimg-amd64-vagrant-disk1.box"
+    config.vm.network :bridged
+    # config.vm.network :hostonly , "192.168.0.100"
+
+
+    # config.vm.forward_port 80, 8080
+    # 80 = host port, 8080 = guest port
+    # config.vm.boot_mode = gui
+    # config.vm.share_folder "v-app", "/vagrant_app", "./application"
+    #                        id     , guest path    , host path
+
+    #db_config.vm.customise [ "modifyvm, :id, "--memory", 1024 ]
+    #db_config.vm.customise [ "modifyvm, :id, "--cpus", 2 ]
+    #db_config.vm.customise [ "modifyvm, :id, "--chipset", "inch9" ]
+
+end
