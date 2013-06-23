@@ -15,4 +15,6 @@ Vagrant::Config.run do |config|
     #db_config.vm.customise [ "modifyvm, :id, "--cpus", 2 ]
     #db_config.vm.customise [ "modifyvm, :id, "--chipset", "inch9" ]
 
+
+# https://github.com/jmfontaine/vagrant-talk/blob/master/simple-setup/Vagrantfile
 end
