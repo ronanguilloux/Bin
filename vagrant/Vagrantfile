@@ -1,12 +1,42 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+# source: https://github.com/jmfontaine/vagrant-talk/blob/master/simple-setup/Vagrantfile
 Vagrant::Config.run do |config|
     config.vm.box = "raring64"
     config.vm.box_url = "http://cloud-images.ubuntu.com/vagrant/raring/current/raring-server-cloudimg-amd64-vagrant-disk1.box"
     config.vm.network :bridged
+
+    # Assign this VM to a host-only network IP, allowing you to access it
+    # via the IP. Host-only networks can talk to the host machine as well as
+    # any other machines on the same network, but cannot be accessed (through this
+    # network interface) by any external networks.
     # config.vm.network :hostonly , "192.168.0.100"
 
 
-    # config.vm.forward_port 80, 8080
+    # Set the default project share to use nfs
+    # config.vm.share_folder("v-web", "/vagrant/www", "./www", :nfs => true)
+    # config.vm.share_folder("v-db", "/vagrant/db", "./db", :nfs => true)
+
+    # Forward a port from the guest to the host, which allows for outside
+    # computers to access the VM, whereas host only networking does not.
     # 80 = host port, 8080 = guest port
+    config.vm.forward_port 80, 8080
+
+    # Set the Timezone to something useful
+    config.vm.provision :shell, :inline => "echo \"Europe/Paris\" | sudo tee
+
+    # Update the server
+    # config.vm.provision :shell, :inline => "apt-get update --fix-missing"
+
+    # Enable Puppet
+    # config.vm.provision :puppet do |puppet|
+    #     puppet.facter = { "fqdn" => "local.pyrocms", "hostname" => "www" } 
+    #     puppet.manifests_path = "puppet/manifests"
+    #     puppet.manifest_file  = "ubuntu-apache2-pgsql-php5.pp"
+    #     puppet.module_path  = "puppet/modules"
+    # end
+
+
     # config.vm.boot_mode = gui
     # config.vm.share_folder "v-app", "/vagrant_app", "./application"
     #                        id     , guest path    , host path
@@ -16,5 +46,4 @@ Vagrant::Config.run do |config|
     #db_config.vm.customise [ "modifyvm, :id, "--chipset", "inch9" ]
 
 
-# https://github.com/jmfontaine/vagrant-talk/blob/master/simple-setup/Vagrantfile
 end
