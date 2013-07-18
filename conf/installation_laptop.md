@@ -218,6 +218,14 @@ Mongo backups
 Office stuff
 
     sudo apt-get install freemind planner collatinus conduit grsync hamster
+    
+Balsamiq: http://www.randomhacks.co.uk/how-to-install-balsamiq-mockups-on-ubuntu-13-04/
+
+    License source: http://www.mail-archive.com/launchpad-users@lists.launchpad.net/msg01068.html
+    License for Ubuntu dev purposes:
+    
+    Organization name: Canonical UX
+    Serial Key: eNrzzU/OLi0odswsqnFOzMvPy0xOzFEIjagxNDIxMQASBiBQ41xjaAgAQYUNaw==
 
 Education
 
