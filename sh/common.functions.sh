@@ -1,5 +1,17 @@
 #!/bin/sh
 
+function green($string) {
+    return "\033[1;32m{$string}\033[0m";
+}
+
+function red($string) {
+    return "\033[1;31m{$string}\033[0m";
+}
+
+function generatePassword($length = 8, $chars = '#[]()-_!?%abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789') {
+    return substr(str_shuffle($chars), 0, $length);
+}
+
 function _inihash () {
     # private function
     # call at the beginning of each procedure
