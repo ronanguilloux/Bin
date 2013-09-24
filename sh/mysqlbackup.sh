@@ -58,7 +58,7 @@ MAILCONTENT="log"
 MAXATTSIZE="4000"
 
 # Email Address to send mail to? (user@domain.com)
-MAILADDR="rguilloux@toog.fr,tmoyse@toog.fr"
+MAILADDR="you@company.com"
 
 
 # ============================================================
@@ -87,7 +87,7 @@ COMP=gzip
 COMMCOMP=no
 
 # Additionally keep a copy of the most recent backup in a seperate directory.
-LATEST=no
+LATEST=yes
 
 #  The maximum size of the buffer for client/server communication. e.g. 16MB (maximum is 1GB)
 MAX_ALLOWED_PACKET=
@@ -123,7 +123,7 @@ VER=2.6									# Version Number
 LOGFILE=$BACKUPDIR/$DBHOST-`date +%N`.log		# Logfile Name
 LOGERR=$BACKUPDIR/ERRORS_$DBHOST-`date +%N`.log		# Logfile Name
 BACKUPFILES=""
-OPT="--quote-names --opt"			# OPT string for use with mysqldump ( see man mysqldump )
+OPT="--quote-names --opt --skip-lock-tables"			# OPT string for use with mysqldump ( see man mysqldump )
 
 # Add --compress mysqldump option to $OPT
 if [ "$COMMCOMP" = "yes" ];
