@@ -15,7 +15,7 @@ SSH on the raspi
 
     ssh pi@[RASPBERRY.PI.IP]
 
-Use default `pi` password: `rasperry`
+Use default `pi` password: `raspberry`
 
     sudo raspi-config
 
